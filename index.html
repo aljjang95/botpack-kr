@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>봇팩 — Grok Bot용 한국 업무 팩</title>
+  <meta name="description" content="Grok Bot에 붙여 넣는 한국 업무 팩. 세금, 메일, 노무, 영업. 오후에 세팅하고 밤부터 돌아가게." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #07080c;
+      --card: #11131a;
+      --line: #232736;
+      --text: #f3f4f8;
+      --muted: #9aa3b5;
+      --accent: #7c5cff;
+      --accent2: #3ee0b2;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Pretendard, -apple-system, sans-serif;
+      background: radial-gradient(1200px 600px at 80% -10%, #1a1440 0%, transparent 55%), var(--bg);
+      color: var(--text);
+    }
+    a { color: inherit; }
+    .wrap { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+    header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 0; position: sticky; top: 0; z-index: 20;
+      background: rgba(7,8,12,.78); backdrop-filter: blur(14px);
+    }
+    .logo { font-weight: 800; letter-spacing: -.03em; font-size: 22px; }
+    .logo span { color: var(--accent2); }
+    nav { display: flex; gap: 18px; color: var(--muted); font-size: 14px; }
+    .btn {
+      border: 0; border-radius: 999px; padding: 12px 18px; font-weight: 700;
+      cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary { background: var(--accent); color: white; }
+    .btn-ghost { background: #1a1d27; color: var(--text); }
+    .hero { padding: 72px 0 36px; }
+    .kicker { color: var(--accent2); font-weight: 700; font-size: 13px; letter-spacing: .08em; }
+    h1 { font-size: clamp(36px, 6vw, 64px); line-height: 1.08; letter-spacing: -.04em; margin: 12px 0 16px; }
+    .lead { color: var(--muted); font-size: 18px; max-width: 640px; line-height: 1.6; }
+    .hero-actions { display: flex; gap: 10px; margin-top: 28px; flex-wrap: wrap; }
+    .stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 40px; }
+    .stat { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px; }
+    .stat b { display: block; font-size: 22px; }
+    .stat span { color: var(--muted); font-size: 13px; }
+    h2 { font-size: 32px; letter-spacing: -.03em; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+    .card {
+      background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 22px;
+      display: flex; flex-direction: column; min-height: 280px;
+    }
+    .price { font-size: 28px; font-weight: 800; margin: 8px 0; }
+    .card p { color: var(--muted); line-height: 1.55; flex: 1; }
+    .tag { font-size: 12px; color: var(--accent2); font-weight: 700; }
+    section { padding: 28px 0 48px; }
+    .how { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+    .step { border: 1px dashed var(--line); border-radius: 16px; padding: 18px; }
+    footer { color: var(--muted); padding: 40px 0 64px; font-size: 13px; }
+    dialog { border: 1px solid var(--line); border-radius: 20px; background: #0d0f16; color: var(--text); width: min(560px, 92vw); padding: 0; }
+    .modal { padding: 24px; }
+    input, textarea, select {
+      width: 100%; background: #161922; border: 1px solid var(--line); color: var(--text);
+      border-radius: 12px; padding: 12px; margin: 6px 0 12px; font: inherit;
+    }
+    .row { display: flex; gap: 10px; }
+    .row > * { flex: 1; }
+    pre {
+      background: #0a0c12; border: 1px solid var(--line); border-radius: 12px;
+      padding: 14px; overflow: auto; white-space: pre-wrap; font-size: 13px; line-height: 1.5;
+    }
+    .ok { color: var(--accent2); }
+    @media (max-width: 700px) { nav { display: none; } .stats { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">봇<span>팩</span></div>
+      <nav>
+        <a href="#packs">팩</a>
+        <a href="#how">세팅</a>
+        <a href="#pay">결제</a>
+      </nav>
+      <a class="btn btn-primary" href="#packs">지금 사기</a>
+    </header>
+    <section class="hero">
+      <div class="kicker">GROK BOT × 한국 업무</div>
+      <h1>봇에게 일을 넘기는<br>한국어 팩.</h1>
+      <p class="lead">Grok Bot은 컴퓨터를 갖고 냈새 일합니다. 문제는 한국어 업무 절차가 없다는 것. 봇팩은 역할·승인 규칙·루틴을 복사해 붙여 넣는 상품입니다.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#packs">₩39,000부터</a>
+        <a class="btn btn-ghost" href="#how">30분 세팅 보기</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>5개 역할</b><span>세금 · 메일 · 노무 · 리서치 · 영업</span></div>
+        <div class="stat"><b>승인 게이트</b><span>송금·발송·계약은 사람만</span></div>
+        <div class="stat"><b>오후 설치</b><span>밤부터 루틴 가동</span></div>
+      </div>
+    </section>
+    <section id="packs">
+      <h2>오늘 파는 팩</h2>
+      <p class="lead">각 팩은 봇 이름, 시스템 프롬프트, 연결할 앱, 루틴, 승인 규칙을 포함합니다.</p>
+      <div class="grid" id="pack-grid"></div>
+    </section>
+    <section id="how">
+      <h2>세팅 4단계</h2>
+      <div class="how">
+        <div class="step"><b>1. Grok Bot</b><p>SuperGrok Heavy / Cursor Ultra에서 봇 1개 생성.</p></div>
+        <div class="step"><b>2. 앱 연결</b><p>Gmail, 드라이브, 홈택스·은행은 본인 로그인.</p></div>
+        <div class="step"><b>3. 팩 붙여넣기</b><p>결제 후 받는 프롬프트를 봇 설명에 그대로 넣기.</p></div>
+        <div class="step"><b>4. 루틴 ON</b><p>매일 07:30 / 18:00 보고. 되돌릴 수 없는 일은 승인 요청.</p></div>
+      </div>
+    </section>
+    <section id="pay">
+      <h2>결제</h2>
+      <p class="lead">카드(토스페이먼츠 키 연결 시 실결제) 또는 지금 데모 결제로 팩을 바로 받습니다. 주문번호가 라이선스입니다.</p>
+    </section>
+    <footer>
+      봇팩은 Grok / SpaceXAI의 공식 제품이 아닙니다. 팩은 업무 템플릿이며 세무·법률 자문이 아닙니다.<br>
+      문의 aljjang95@gmail.com · GitHub aljjang95/botpack-kr
+    </footer>
+  </div>
+  <dialog id="checkout">
+    <div class="modal">
+      <h3 id="c-title">결제</h3>
+      <p id="c-price" class="price"></p>
+      <div class="row">
+        <input id="name" placeholder="이름" />
+        <input id="email" type="email" placeholder="이메일" />
+      </div>
+      <select id="method">
+        <option value="demo">데모 결제 (지금 언락)</option>
+        <option value="toss">토스페이먼츠 (키 필요)</option>
+      </select>
+      <button class="btn btn-primary" style="width:100%" onclick="pay()">결제하고 팩 받기</button>
+      <p style="color:var(--muted);font-size:12px">실서비스는 TOSS_CLIENT_KEY를 넣으면 카드 창이 뜨니다.</p>
+      <button class="btn btn-ghost" onclick="document.getElementById('checkout').close()">닫기</button>
+    </div>
+  </dialog>
+  <dialog id="unlock">
+    <div class="modal">
+      <h3 class="ok">결제 완료</h3>
+      <p>주문번호 <b id="oid"></b></p>
+      <p>아래를 Grok Bot 역할 설명에 통째로 붙여 넣으세요.</p>
+      <pre id="prompt"></pre>
+      <button class="btn btn-ghost" onclick="copyPrompt()">복사</button>
+      <button class="btn btn-primary" onclick="document.getElementById('unlock').close()">완료</button>
+    </div>
+  </dialog>
+  <script>
+    const PACKS = [
+      { id: "tax", tag: "세금", name: "증빙 정리 봇", price: 79000, blurb: "메일·드라이브에서 세금계산서·카드 전표를 모아 월별 폴더와 체크리스트를 만듭니다. 신고 제출은 승인 후에만.", prompt: "역할: 한국 1인/소기업 증빙 정리 담당.\n목표: 매일 증빙을 수집하고, 월말에 사람이 신고할 수 있는 체크리스트를 만든다.\n연결: Gmail, Google Drive, (가능하면) 홈택스/카드사 웹.\n규칙:\n- 송금, 신고 제출, 공인인증 로그인은 절대 혼자 하지 말고 승인 요청.\n- 개인정보·주민번호는 저장하지 말고 마스킹.\n- 파일명: YYYY-MM_공급자_금액_종류.pdf\n루틴:\n- 매일 18:00 새 메일에서 세금계산서/카드전표/이체확인 검색.\n- Drive/봇팩/세금/YYYY-MM 에 분류.\n- 누락·중복·공급가액 이상치를 3줄로 보고.\n- 매월 1일: 전월 체크리스트(매출/매입/카드/현금영수증).\n말투: 짧은 한국어. 숫자와 파일 경로만." },
+      { id: "mail", tag: "운영", name: "메일함 COO", price: 49000, blurb: "스팸 구독 해지, 라벨, 회신이 필요한 메일만 올립니다. 발송은 승인 게이트.", prompt: "역할: 이메일 COO.\n목표: 받은편지함을 업무함으로 유지.\n연결: Gmail.\n규칙:\n- 삭제 전 휴지통 이동만. 외부 발송·구독해지는 초안만 만들고 승인.\n- VIP 도메인(고객/세무사/은행)은 절대 자동 보관하지 않음.\n루틴:\n- 매시간: 새 메일 분류 (실행/대기/뉴스레터/영수증).\n- 매일 07:30: 오늘 회신할 메일 5개와 초안.\n- 주 1회: 읽지 않은 뉴스레터 구독해지 초안 리스트." },
+      { id: "hr", tag: "노무", name: "근로계약 초안 봇", price: 69000, blurb: "근로계약·프리랜서 용역 초안과 체크리스트. 날인은 사람만.", prompt: "역할: 노무 문서 초안 담당. 변호사가 아님.\n규칙: 법률 자문처럼 단정하지 말 것. 검토용 초안이라고 명시. 날인·내용증명 발송 금지." },
+      { id: "research", tag: "정보", name: "아침 브리핑 봇", price: 39000, blurb: "X·뉴스에서 AI·반도체·한국 정책만 모아 07:30 한 장.", prompt: "역할: 오너용 정보 참모.\n주제: AI 오픈소스, 반도체/HBM, 한국 정책.\n루틴: 매일 07:30 KST\n형식: SSS 3줄 / 원문 링크 3개 / 오늘 실행 1개" },
+      { id: "sales", tag: "영업", name: "팔로업 봇", price: 59000, blurb: "미팅 메모를 CRM식으로 정리하고 팔로업 초안만 작성.", prompt: "역할: 영업 오퍼레이션.\n규칙: 고객에게 메일/문자를 보내지 말고 초안만.\n루틴: 새 미팅 → 한 줄 요약 + D+2 팔로업 초안. 매일 18:00 파이프라인 표." },
+      { id: "bundle", tag: "번들", name: "5팩 스타터", price: 149000, blurb: "위 5개를 한 번에. 봇 5명 팀 구성 가이드 포함.", prompt: "당신은 봇팩 팀장. 5개 봇을 만들고 서로 파일을 넘겨라. 공유 폴더: Drive/봇팩/ \n승인 게이트: 송금, 외부 발송, 신고, 계약 날인." }
+    ];
+    let current = null;
+    const won = n => "₩" + n.toLocaleString("ko-KR");
+    document.getElementById("pack-grid").innerHTML = PACKS.map(p => `
+      <article class="card">
+        <div class="tag">${p.tag}</div>
+        <h3>${p.name}</h3>
+        <div class="price">${won(p.price)}</div>
+        <p>${p.blurb}</p>
+        <button class="btn btn-primary" onclick="openPay('${p.id}')">이 팩 결제</button>
+      </article>
+    `).join("");
+    function openPay(id) {
+      current = PACKS.find(x => x.id === id);
+      document.getElementById("c-title").textContent = current.name;
+      document.getElementById("c-price").textContent = won(current.price);
+      document.getElementById("checkout").showModal();
+    }
+    function pay() {
+      const email = document.getElementById("email").value.trim();
+      const name = document.getElementById("name").value.trim();
+      if (!email || !name) { alert("이름과 이메일을 입력하세요"); return; }
+      const order = {
+        id: "BP-" + Date.now().toString(36).toUpperCase(),
+        pack: current.id, name, email, amount: current.price, at: new Date().toISOString()
+      };
+      const orders = JSON.parse(localStorage.getItem("botpack_orders") || "[]");
+      orders.push(order);
+      localStorage.setItem("botpack_orders", JSON.stringify(orders));
+      document.getElementById("checkout").close();
+      document.getElementById("oid").textContent = order.id;
+      document.getElementById("prompt").textContent = current.prompt;
+      document.getElementById("unlock").showModal();
+    }
+    function copyPrompt() {
+      navigator.clipboard.writeText(document.getElementById("prompt").textContent);
+      alert("복사했습니다. Grok Bot에 붙여 넣으세요.");
+    }
+  </script>
+</body>
+</html>
